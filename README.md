@@ -16,7 +16,7 @@ Two major additions :
         <script src="http://output.jsbin.com/tazemuy/4.js"></script> 
 
 
-[Demo](http://plnkr.co/edit/lvnIQCJMnniFlOeRseaZ?p=preview)
+[Demo](http://plnkr.co/edit/iG8lPI7D2cqKXtPsQGcX?p=preview)
  
  
  That's all.
