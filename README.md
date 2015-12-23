@@ -11,7 +11,7 @@ Two major additions :
  [![enter image description here][1]][1]
  
  
-2. Activated via a single line of JS script (can also be at the head): 
+2. Activated via a single line of  script tag (can also be at the HEAD): 
 
          // put the url of the file in the right place.
         <script src="http://output.jsbin.com/tazemuy/4.js"></script> 
