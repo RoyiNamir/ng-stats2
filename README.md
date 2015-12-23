@@ -13,6 +13,7 @@ Two major additions :
  
 2. Activated via a single line of JS script (can also be at the head): 
 
+         // put the url of the file in the right place.
         <script src="http://output.jsbin.com/tazemuy/4.js"></script> 
 
 
