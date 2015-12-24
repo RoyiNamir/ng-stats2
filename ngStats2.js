@@ -25,6 +25,7 @@
 }(window.self, function()
 {
     'use strict';
+    var ELEMENT_WIDTH = 160;
     var autoloadKey = 'showAngularStats_autoload';
     var current = null;
     // define the timer function to use based upon whether or not 'performance is available'
@@ -157,7 +158,7 @@
                 borderRight: '1px solid #666',
                 color: 'red',
                 fontFamily: 'Courier',
-                width: 130,
+                width: ELEMENT_WIDTH,
                 zIndex: 9999,
                 textAlign: 'right',
                 top: opts.position.indexOf('top') == -1 ? null : 0,
@@ -204,7 +205,7 @@
 
         // initialize the canvas
         var graphSz = {
-            width: 130,
+            width: ELEMENT_WIDTH,
             height: 40
         };
         var cvs = state.$el.find('canvas').attr(graphSz)[0];
