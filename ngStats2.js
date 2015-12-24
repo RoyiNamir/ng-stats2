@@ -144,6 +144,7 @@
             htmlId: null,
             digestTimeThreshold: 16,
             autoload: false,
+            mouseDismiss: true,
             trackDigest: false,
             trackWatches: false,
             logDigest: false,
@@ -199,6 +200,15 @@
         // add the DOM element
         var htmlId = opts.htmlId ? (' id="' + opts.htmlId + '"') : '';
         state.$el = angular.element('<div' + htmlId + '><canvas></canvas><div></div></div>').css(opts.styles);
+        if (opts.mouseDismiss) {
+            state.$el.on('mouseenter', function () {
+                var pos = state.$el.position();
+                var css = {};
+                css[pos.left === 0 ? 'right' : 'left'] = css[pos.top === 0 ? 'bottom' : 'top'] = 0;
+                css[pos.left !== 0 ? 'right' : 'left'] = css[pos.top !== 0 ? 'bottom' : 'top'] = '';
+                state.$el.css(css)
+            });
+        }
         bodyEl.append(state.$el);
         var $text = state.$el.find('div');
 
