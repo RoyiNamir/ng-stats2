@@ -25,7 +25,6 @@
 }(window.self, function()
 {
     'use strict';
-    var ELEMENT_WIDTH = 160;
     var autoloadKey = 'showAngularStats_autoload';
     var current = null;
     // define the timer function to use based upon whether or not 'performance is available'
@@ -145,6 +144,7 @@
             htmlId: null,
             digestTimeThreshold: 16,
             autoload: false,
+            mouseDismiss: true,
             trackDigest: false,
             trackWatches: false,
             logDigest: false,
@@ -158,7 +158,7 @@
                 borderRight: '1px solid #666',
                 color: 'red',
                 fontFamily: 'Courier',
-                width: ELEMENT_WIDTH,
+                width: 170,
                 zIndex: 9999,
                 textAlign: 'right',
                 top: opts.position.indexOf('top') == -1 ? null : 0,
@@ -200,12 +200,21 @@
         // add the DOM element
         var htmlId = opts.htmlId ? (' id="' + opts.htmlId + '"') : '';
         state.$el = angular.element('<div' + htmlId + '><canvas></canvas><div></div></div>').css(opts.styles);
+        if (opts.mouseDismiss) {
+            state.$el.on('mouseenter', function () {
+                var pos = state.$el.position();
+                var css = {};
+                css[pos.left === 0 ? 'right' : 'left'] = css[pos.top === 0 ? 'bottom' : 'top'] = 0;
+                css[pos.left !== 0 ? 'right' : 'left'] = css[pos.top !== 0 ? 'bottom' : 'top'] = '';
+                state.$el.css(css)
+            });
+        }
         bodyEl.append(state.$el);
         var $text = state.$el.find('div');
 
         // initialize the canvas
         var graphSz = {
-            width: ELEMENT_WIDTH,
+            width: opts.styles.width,
             height: 40
         };
         var cvs = state.$el.find('canvas').attr(graphSz)[0];
